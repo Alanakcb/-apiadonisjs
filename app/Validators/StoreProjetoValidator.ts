@@ -25,7 +25,7 @@ export default class StoreProjetoValidator {
 	 *    ```
 	 */
   public schema = schema.create({
-	  projeto: schema.string()
+	  comentario: schema.string()
   })
 
 	/**

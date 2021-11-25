@@ -1,7 +1,7 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
-export default class Projetos extends BaseSchema {
-  protected tableName = 'projetos'
+export default class Comentarios extends BaseSchema {
+  protected tableName = 'comentarios'
 
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
@@ -13,7 +13,7 @@ export default class Projetos extends BaseSchema {
         .inTable("users")
         .onUpdate("CASCADE")
         .onDelete("CASCADE")
-      table.text('projeto')
+      table.text('comentario')
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL

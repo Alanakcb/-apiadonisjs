@@ -1,48 +1,48 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import Projeto from 'App/Models/Projeto'
+import Comentario from 'App/Models/Comentario'
 import StoreProjetoValidator from 'App/Validators/StoreProjetoValidator'
 
 export default class ProjetosController {
   public async index({ }: HttpContextContract) {
-    const projetoDB = await Projeto.all()
-    return projetoDB
+    const comentarioDB = await Comentario.all()
+    return comentarioDB
   }
 
   public async store({ request, auth }: HttpContextContract) {
     const data = await request.validate(StoreProjetoValidator)
-    const projetoDB = await Projeto.create({ ...data, userId: auth.user?.id })
-    return projetoDB
+    const comentarioDB = await Comentario.create({ ...data, userId: auth.user?.id })
+    return comentarioDB
   }
 
   public async show({ params, response }: HttpContextContract) {
     try {
-      const projetoDB = await Projeto.findOrFail(params.id)
-      return projetoDB
+      const comentarioDB = await Comentario.findOrFail(params.id)
+      return comentarioDB
     } catch (error) {
-      response.status(400).send("Projeto não encontrado!!!")
+      response.status(400).send("Comentario não encontrado!!!")
     }
   }
 
   public async update({ request, params, response }: HttpContextContract) {
-    const { projeto } = await request.validate(StoreProjetoValidator)
+    const { comentario } = await request.validate(StoreProjetoValidator)
     try {
-      const projetoDB = await Projeto.findOrFail(params.id)
-      projetoDB.projeto = projeto
-      await projetoDB.save()
-      return projetoDB
+      const comentarioDB = await Comentario.findOrFail(params.id)
+      comentarioDB.comentario = comentario
+      await comentarioDB.save()
+      return comentarioDB
 
     } catch (error) {
-      response.status(400).send("Projeto não encontrado!!!")
+      response.status(400).send("Comentario não encontrado!!!")
     }
   }
 
   public async destroy({ params, response }: HttpContextContract) {
     try {
-      const projetoDB = await Projeto.findOrFail(params.id)
-      await projetoDB.delete()
-      return projetoDB
+      const comentarioDB = await Comentario.findOrFail(params.id)
+      await comentarioDB.delete()
+      return comentarioDB
     } catch (error) {
-      response.status(400).send("Projeto não encontrado!!!")
+      response.status(400).send("Comentario não encontrado!!!")
     }
   }
 }

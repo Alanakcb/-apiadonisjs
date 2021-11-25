@@ -26,8 +26,8 @@ import Route from '@ioc:Adonis/Core/Route'
 
 Route.post("/register", "AuthController.register")
 Route.post("/login", "AuthController.login")
-Route.get("/projetos", "ProjetosController.index")
-Route.get("/projetos/:id", "ProjetosController.show")
+Route.get("/comentarios", "ProjetosController.index")
+Route.get("/comentarios/:id", "ProjetosController.show")
 Route.group(() => {
-  Route.resource("projetos", 'ProjetosController').apiOnly().except(['index', 'show'])
+  Route.resource("comentarios", 'ProjetosController').apiOnly().except(['index', 'show'])
 }).middleware('auth')

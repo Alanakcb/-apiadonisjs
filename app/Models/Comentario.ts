@@ -2,7 +2,7 @@ import { DateTime } from 'luxon'
 import { BaseModel, BelongsTo, belongsTo, column } from '@ioc:Adonis/Lucid/Orm'
 import User from 'App/Models/User'
 
-export default class Projeto extends BaseModel {
+export default class Comentario extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
@@ -10,7 +10,7 @@ export default class Projeto extends BaseModel {
   public userId: number
 
   @column()
-  public projeto: string
+  public comentario: string
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
